@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario Pastel</title>
+  <link rel="stylesheet" href="css/calendario-t.css">
+</head>
+
+<body>
+  
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button id="prev-month">◀</button>
+      <h2 id="month-year"></h2>
+      <button id="next-month">▶</button>
+    </div>
+    <div class="calendar">
+      <div class="calendar-days">
+        <div>Dom</div>
+        <div>Lun</div>
+        <div>Mar</div>
+        <div>Mié</div>
+        <div>Jue</div>
+        <div>Vie</div>
+        <div>Sáb</div>
+      </div>
+      <div id="calendar-dates" class="calendar-dates"></div>
+    </div>
+    <div>
+      <label for="ini-time">Hora de inicio </label>
+      <input id="ini-time" type="time" name="hora-ini" value="13:00" />
+    </div>
+  <div>
+    <label for="fin-time">Selecciona la hora:</label>
+    <input id="fin-time" type="time" name="hora-fin" value="17:00">
+    
+    </div>
+    <button id="show-selected" class="btn">Mostrar Días Seleccionados</button>
+  </div>
+  <script src="js/trabajador.js"></script>
+</body>
+
+</html>

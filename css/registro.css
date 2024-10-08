@@ -1,0 +1,136 @@
+/* registro.css */
+* {
+  box-sizing: border-box; /* Include padding and border in the width */
+}
+body {
+  font-family: "Cormorant Garamond", serif;
+  background-color: #dee2e6; /* Fondo azul pastel */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  
+}
+
+.bg{
+  
+  background-image: url(../img/fondo1.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+
+
+
+
+}
+
+.registro-container {
+  background-color: #faf8f8; /* Fondo del contenedor rosa claro */
+  padding: 30px;
+  border-radius: 20px 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 100px;
+  filter: grayscale(0);
+  margin: 15px;
+}
+.logo-gray {
+  height: 100px;
+  filter: grayscale(1);
+  margin: 15px;
+}
+
+h2 {
+  text-align: center;
+  color: #000; /* Color de texto rosa oscuro */
+  margin-bottom: 25px;
+}
+
+.form-group {
+    margin: 15px;
+}
+label {
+  color: #000; /* Color de texto azul verdoso */
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid  #aaa; /* Borde rosa pastel */
+    border-radius: 5px;
+    background-color: transparent; /* Fondo de los campos blanco */
+    font-size: 16px;
+    color: #000;
+}
+/*
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #000;
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid #000;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #a5abada0; 
+}
+*/
+.btn {
+    background-color: #dfc3c85c;
+    transition: all 0.5s ease;
+    font-size: 25px;
+    font-weight: 400;
+    border: 1px solid #00000044;
+    border-radius: 14px;
+    padding: 10px 15px;
+    color: #000;
+    min-width: 180px;
+    margin: 15px 0;
+    width: 100%;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background-color: #d682915c;
+    border-color: #58585875;
+  }
+
+
+.contenedor-enlace {
+  display: flex;
+}
+
+.enlace{
+    text-align: center;
+    width: 100%;
+    max-width: 150px;    
+    margin-top: 10px;
+    color: #333;
+}
+.enlace:hover{
+    color: #8a173e;
+}
+

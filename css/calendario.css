@@ -1,0 +1,223 @@
+/* calendario1.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calendar-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    background-color: #6e5773;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.calendar-header button:hover {
+    background-color: #503c52;
+}
+
+.calendar-header div {
+    margin: 0 20px;
+    font-size: 1.5rem;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day-name {
+    font-weight: bold;
+    padding: 10px;
+    background-color: #fdb4bf; /* Color principal */
+    color: #fff;
+    border-radius: 10px;
+}
+
+.calendar .day {
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.calendar .day:hover {
+    background-color: #fdb4bf;
+}
+
+.peinado {
+    background-color: #92d3f8;
+}
+
+.uñas {
+    background-color: #ffaef2;
+}
+
+.pelo {
+    background-color: #4caf50;
+}
+
+.tintura {
+    background-color: #fa85a2;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Ajustar el ancho del modal según necesidades */
+    max-width: 500px; /* Máximo ancho del modal */
+    height: auto;
+    max-height: 80%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+#timeSlots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.time-slot {
+    background-color: #6e5773;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.time-slot:hover {
+    background-color: #503c52;
+}
+
+button[type="submit"] {
+    background-color: #6e5773; /* Color principal */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #503c52; /* Color de fondo al pasar el ratón */
+}
+
+.reserved {
+    background-color: #ccc !important; /* Color para fechas reservadas */
+    cursor: not-allowed;
+    pointer-events: none; /* Desactivar eventos de ratón en fechas reservadas */
+}
+
+.options-table {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.options-table h3 {
+    margin-bottom: 10px;
+}
+
+.options-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.options-table th, .options-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.options-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.options-table td {
+    text-align: left;
+}
