@@ -109,7 +109,7 @@ html::-webkit-scrollbar-thumb {
 
 #inicio {
   min-height: 100vh;
-  background-image: url(/frontend-cb/img/ima2.jpeg);
+  background-image: url("../img/ima2.jpeg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
