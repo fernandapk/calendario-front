@@ -1,0 +1,339 @@
+/* Estilos generales del cuerpo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos del encabezado */
+.header {
+    background-color: #fcb6b4; /* Rosado pastel */
+    color: #fff;
+    padding: 10px 20px; /* Ajustar el padding */
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+    z-index: 1000;
+    border-bottom: 1px solid #f9f9f9; /* Sombra sutil para separar del contenido */
+}
+
+.header .header-content {
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 0 auto; /* Centrar el contenido */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%; /* Asegurar que el contenido ocupe toda la altura del encabezado */
+}
+
+.header .logo img {
+    max-height: 50px; /* Ajusta la altura del logo según sea necesario */
+}
+
+/* Estilos del pie de página */
+.footer {
+    background-color: #fcb6b4; /* Rosado pastel */
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px; /* Ajustar el padding */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+    border-top: 1px solid #f9f9f9; /* Sombra sutil para separar del contenido */
+}
+
+.footer .footer-content {
+    max-width: 1200px; /* Ancho máximo del contenido */
+    margin: 0 auto; /* Centrar el contenido */
+}
+
+/* Ajustar el contenido principal */
+main {
+    margin-top: 80px; /* Ajustar según el alto del encabezado */
+    margin-bottom: 60px; /* Ajustar según el alto del pie de página */
+    padding: 20px;
+    background-image: url('logo.jpg'); /* Cambia 'fondo.jpg' por la ruta de tu imagen */
+    background-size: cover; /* Ajusta el tamaño del fondo para cubrir todo el área */
+    background-position: center; /* Centra la imagen de fondo */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+    background-repeat: no-repeat; /* No repetir la imagen */
+}
+
+/* Estilos del contenedor del calendario */
+.calendar-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* Estilos del encabezado del calendario */
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header button {
+    background-color: #6e5773;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-header button:hover {
+    background-color: #503c52;
+}
+
+.calendar-header div {
+    margin: 0 20px;
+    font-size: 1.5rem;
+}
+
+/* Estilos del calendario */
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.day-name {
+    font-weight: bold;
+    padding: 10px;
+    background-color: #fdb4bf;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.calendar .day {
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calendar .day:hover {
+    background-color: #fdb4bf;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+#appointmentsList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#appointmentsList li {
+    margin-bottom: 10px;
+}
+
+#appointmentsList button {
+    background-color: #ff4c4c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#appointmentsList button:hover {
+    background-color: #d43f3f;
+}
+
+button[type="submit"] {
+    background-color: #6e5773;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #503c52;
+}
+
+.reserved {
+    background-color: #ccc !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.options-table {
+    width: 100%;
+    max-width: 900px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.options-table h3 {
+    margin-bottom: 20px;
+}
+
+.options-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.options-table th, .options-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.options-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.options-table td {
+    text-align: left;
+}
+
+.day .delete-btn {
+    background-color: #eb7070;
+    color: #fff;
+    border: none;
+    padding: 1px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    display: none;
+}
+
+.day:hover .delete-btn {
+    display: block;
+}
+
+.day.reserved {
+    position: relative;
+}
+
+.day.reserved .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: block;
+}
+
+.day {
+    position: relative;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    min-height: 100px;
+}
+
+.day:hover {
+    background-color: #fdb4bf;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.day .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #eb7070;
+    color: #fff;
+    border: none;
+    padding: 1px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    display: none;
+}
+
+.day:hover .delete-btn {
+    display: block;
+}
+
+.reservation-details {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.reservation-details p {
+    margin: 5px 0;
+}

@@ -21,7 +21,7 @@ document.getElementById("formulario-login").addEventListener("submit", async fun
 
             if (data.rol === "usuario") {
                 console.log("Rol: usuario");
-                window.location.href = './calendario.html';
+                window.location.href = './explorar.html';
             } else if (data.rol === "adm") {
                 console.log("Rol: adm");
                 window.location.href = './tablaadmi.html';

@@ -1,27 +1,118 @@
+/* General */
 body {
   font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
   margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  height: 100vh; /* Altura de la ventana del navegador */
 }
 
-.calendar-container {
-  background-color: #ffffff;
+.container {
+  display: flex;
+  flex-direction: column; /* Cambio a columna para mejor responsividad */
+  width: 90%; /* Ancho del contenedor */
+  max-width: 1200px; /* Ancho máximo para pantallas grandes */
+}
+
+/* Menú de navegación */
+.menu {
+  background-color: #333;
+  width: 100%;
+  height: auto; /* Permite que el menú se ajuste al contenido */
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Hace que los elementos de la lista estén en línea */
+  justify-content: space-around; /* Espaciado uniforme entre los elementos */
+}
+
+.menu li {
+  padding: 15px;
+}
+
+.menu li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.menu li a:hover {
+  background-color: #575757;
+}
+
+/* Contenido principal */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espaciado entre las secciones */
+}
+
+/* Perfil del Trabajador */
+.worker-profile {
+  background-color: white;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 1000px;
+  width: 100%;
+  max-width: 350px; /* Ancho máximo para perfil */
+  margin: 0 auto; /* Centra el perfil */
   text-align: center;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.worker-profile h2 {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.worker-profile p {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.worker-profile .btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.worker-profile .btn:hover {
+  background-color: #45a049;
+}
+
+/* Calendario */
+.calendar-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 600px; /* Ancho máximo para el calendario */
+  margin: 0 auto; /* Centra el calendario */
 }
 
 .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .calendar-header button {
@@ -33,16 +124,14 @@ body {
   font-size: 18px;
 }
 
+.calendar-header button:hover {
+  background-color: #7bcfe6;
+}
+
 .calendar-header h2 {
   margin: 0;
   font-size: 20px;
-  color: #333333;
-}
-
-.calendar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  color: #333;
 }
 
 .calendar-days {
@@ -53,11 +142,10 @@ body {
 }
 
 .calendar-days div {
-  background-color: transparent;
-  border-radius: 5px;
   padding: 5px 0;
   font-weight: bold;
   color: #4a4a4a;
+  text-align: center;
 }
 
 .calendar-dates {
@@ -71,31 +159,209 @@ body {
   padding: 10px 0;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
   transition: background-color 0.3s ease;
 }
 
 .calendar-dates div:hover {
-  background-color:  #7bcfe6;
-}
-
-.current-day {
-  background-color: #ffcccb;
-  font-weight: bold;
-  color: red;
+  background-color: #7bcfe6;
 }
 
 .selected-day {
   background-color: #d0dfd0;
-  transition: background-color 0.3s ease;
 }
-.btn{
-  padding: 10px;
-  margin: 50px 10px 10px 10px;
-  background-color: #a8d5e2;
-  border-radius: 5px;
+
+/* Sección de Horarios Guardados */
+.saved-schedules {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 600px; /* Ancho máximo para horarios guardados */
+  margin: 0 auto; /* Centra la sección */
+}
+
+.saved-schedules h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+/* Modal para modificar horarios */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto; /* Aumentar el margen superior para mayor visibilidad */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%; /* Ancho adaptado */
+  max-width: 500px; /* Ancho máximo del modal */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido dentro del modal */
+}
+
+.schedule-days {
+  max-height: 300px; /* Altura fija para permitir desplazamiento */
+  overflow-y: auto; /* Habilita el desplazamiento vertical */
+  width: 100%; /* Asegura que el contenedor use todo el ancho */
+  margin-bottom: 15px; /* Espacio inferior para el botón */
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column; /* Coloca los elementos uno debajo del otro */
+  align-items: center; /* Centra los elementos del formulario */
+}
+
+button[type="submit"].btn {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 }
-.btn:hover{
-  background-color: #7bcfe6;
+
+button[type="submit"].btn:hover {
+  background-color: #45a049;
 }
+
+/* Media Queries para dispositivos más pequeños */
+@media (max-width: 768px) {
+  .menu {
+    height: auto; /* Permite que el menú se ajuste al contenido */
+  }
+
+  .menu ul {
+    flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+    align-items: center; /* Centra los elementos en la columna */
+  }
+
+  .menu li {
+    padding: 10px; /* Espacio reducido */
+  }
+
+  .calendar-container, .saved-schedules, .worker-profile {
+    max-width: 90%; /* Ajusta el ancho para pantallas pequeñas */
+  }
+}
+/* Estilos para el botón de Editar */
+.edit-btn {
+  padding: 5px 10px;
+  background-color: #2196F3; /* Color azul */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-btn:hover {
+  background-color: #1976D2; /* Color azul más oscuro al pasar el mouse */
+}
+
+/* Asegúrate de que la celda tenga un ancho adecuado */
+td {
+  text-align: center; /* Centra el texto en la celda */
+}
+body {
+  display: flex;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.menu {
+  width: 200px; /* Ancho de la barra de navegación */
+  background-color: #f4f4f4; /* Color de fondo */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Sombra */
+}
+
+.menu ul {
+  list-style-type: none; /* Sin viñetas */
+  padding: 0; /* Sin padding */
+}
+
+.menu ul li {
+  margin: 10px 0; /* Margen entre los elementos */
+}
+
+.menu ul li a {
+  text-decoration: none; /* Sin subrayado */
+  color: #333; /* Color del texto */
+}
+
+.main-content {
+  flex: 1; /* Toma el espacio restante */
+  padding: 20px; /* Espaciado interno */
+}
+
+.worker-profile {
+  margin-bottom: 20px; /* Espacio debajo del perfil */
+}
+
+.saved-schedules {
+  margin-top: 20px; /* Espacio encima de la tabla */
+}
+
+/* Estilo para el modal */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed; /* Fijo en la ventana */
+  z-index: 1; /* Por encima del contenido */
+  left: 0;
+  top: 0;
+  width: 100%; /* 100% de ancho */
+  height: 100%; /* 100% de alto */
+  overflow: auto; /* Permitir desplazamiento si es necesario */
+  background-color: rgb(0,0,0); /* Color de fondo */
+  background-color: rgba(0,0,0,0.4); /* Fondo negro con opacidad */
+}
+
+/* Contenido del modal */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% desde arriba y centrado */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ancho del modal */
+}
+
+.close-btn {
+  color: #aaa; /* Color del botón de cerrar */
+  float: right; /* A la derecha */
+  font-size: 28px; /* Tamaño de fuente */
+  font-weight: bold; /* Negrita */
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black; /* Color al pasar el mouse */
+  text-decoration: none; /* Sin subrayado */
+  cursor: pointer; /* Cursor tipo puntero */
+}
+.highlight {
+    background-color: yellow; /* Cambiar a cualquier color que desees */
+    border-radius: 50%; /* Para hacer el resaltado más redondeado */
+    color: black; /* Color del texto */
+}
+

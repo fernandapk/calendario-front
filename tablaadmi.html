@@ -22,9 +22,65 @@
 
       <nav class="navbar">
         <a href="/">Inicio</a>
-        <a class="btn-1" href="/login.html">Cerrar Sesión</a>
+        <a class="btn-1" href="/frontend-cb/login.html">Cerrar Sesión</a>
       </nav>
     </header>
+    <main>
+      <section class="resumen">
+          <h2>Resumen General</h2>
+          <div class="cards">
+              <div class="card">
+                  <h3>Total de Trabajadores</h3>
+                  <p>15</p>
+              </div>
+              <div class="card">
+                  <h3>Clientes Hoy</h3>
+                  <p>45</p>
+              </div>
+              <div class="card">
+                  <h3>Ingresos del Día</h3>
+                  <p>€1,200</p>
+              </div>
+          </div>
+      </section>
+
+      <section class="gestion-trabajadores">
+          <h2>Gestión de Trabajadores</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Nombre</th>
+                      <th>Rol</th>
+                      <th>Horario</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>Ana Pérez</td>
+                      <td>Peluquera</td>
+                      <td>9:00 - 18:00</td>
+                      <td><button>Editar</button> <button>Eliminar</button></td>
+                  </tr>
+                  <tr>
+                      <td>Luis Martínez</td>
+                      <td>Manicurista</td>
+                      <td>10:00 - 19:00</td>
+                      <td><button>Editar</button> <button>Eliminar</button></td>
+                  </tr>
+                  <!-- Agregar más trabajadores aquí -->
+              </tbody>
+          </table>
+      </section>
+
+      <section class="estadisticas">
+          <h2>Estadísticas Recientes</h2>
+          <div class="chart">
+              <!-- Aquí podrías integrar una gráfica con Chart.js u otra librería -->
+              <p>Gráfica de desempeño semanal (en construcción)</p>
+          </div>
+      </section>
+  </main>
 
     <section>
       <div class="form-container">
@@ -39,8 +95,8 @@
               <input type="email" id="email" name="email" required />
             </div>
             <div class="form-group">
-              <label for="password">Contraseña:</label>
-              <input type="password" id="contraseña" name="contraseña" required />
+              <label for="contraseña">Contraseña:</label>
+              <input type="text" id="contraseña" name="contraseña" required />
             </div>
 
           <button class="btn" type="submit">Agregar</button>
