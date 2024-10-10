@@ -16,8 +16,7 @@ document.getElementById("nuevoTrabajadorForm").addEventListener("submit", async 
             body: JSON.stringify({ 
                 username: nombre, 
                 email: email, 
-                password: contraseña,
-                rol: 'trabajador'
+                password: contraseña  // Cambiado de 'contraseña' a 'password'
              })
         });
 
@@ -33,6 +32,7 @@ document.getElementById("nuevoTrabajadorForm").addEventListener("submit", async 
     }
 });
 
+// Función para cargar trabajadores
 async function cargarTrabajadores() {
     const url = "http://localhost:5000/obtenertrabajadores";  // URL de tu servidor para obtener los trabajadores
 
@@ -49,10 +49,6 @@ async function cargarTrabajadores() {
             let cellEmail = row.insertCell(1);
             let cellContraseña = row.insertCell(2);
 
-
-            //***************************************************** */
-            //***************************************************** */
-            //***************************************************** */
             let cellEliminar = row.insertCell(3);
             
             // botón eliminar
@@ -86,14 +82,10 @@ async function cargarTrabajadores() {
             };
             
             cellEliminar.appendChild(botonEliminar);
-            //***************************************************** */
-            //***************************************************** */
-            //***************************************************** */
             
-
             cellNombre.innerHTML = trabajador.username;
             cellEmail.innerHTML = trabajador.email;
-            cellContraseña.innerHtml = trabajador.password;
+            cellContraseña.innerHTML = trabajador.password;  // Cambiado de innerHtml a innerHTML
         });
     } catch (error) {
         console.error("Error al cargar trabajadores:", error);

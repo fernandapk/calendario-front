@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquerías Disponibles</title>
+    <link rel="stylesheet" href="../../assent/css/empresa.css">
+</head>
+<body>
+    <header>
+        <h1>Peluquerías Disponibles</h1>
+    </header>
+
+    <section class="card-container" id="cardContainer">
+        <!-- Las tarjetas de las peluquerías se generarán aquí -->
+    </section>
+
+    <script>
+        // Función para obtener empresas y crear tarjetas
+        async function fetchEmpresas() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/obtener-empresas');
+                if (!response.ok) throw new Error('Error al obtener las empresas');
+
+                const empresas = await response.json();
+                const cardContainer = document.getElementById('cardContainer');
+
+                empresas.forEach(empresa => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <img src="https://via.placeholder.com/150" alt="${empresa.nombre_empresa}" class="card-image">
+                        <h2>${empresa.nombre_empresa}</h2>
+                        <button class="visit-button">Visitar</button>
+                    `;
+                    cardContainer.appendChild(card);
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // Llamar a la función al cargar la página
+        document.addEventListener('DOMContentLoaded', fetchEmpresas);
+    </script>
+</body>
+</html>

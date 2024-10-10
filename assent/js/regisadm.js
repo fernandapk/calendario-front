@@ -29,7 +29,7 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
             const data = await respuesta.json();
             alert(data.message);
         
-             window.location.href = './tablaadmi.html';
+             window.location.href = '../../tablaadmi.html';
 
           
         } else {
