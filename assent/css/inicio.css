@@ -246,7 +246,8 @@ html::-webkit-scrollbar-thumb {
 
 /* ------------------------------sección de contacto ------------------------------*/
 .footer {
-  background-color: #d58190;
+  margin-top: 60px;
+  background-color: #ffd4dc;
 }
 
 .footer .box-container {
@@ -275,7 +276,7 @@ html::-webkit-scrollbar-thumb {
 
 
 .footer .box-container .box-f h3 {
-  font-size: 2.2rem;
+  font-size: 20px;
   color: var(--black);
   padding: 1rem 0;
 }
@@ -283,7 +284,7 @@ html::-webkit-scrollbar-thumb {
 
     border-bottom: 0.2rem solid transparent;
   display: block;
-  font-size: 1.8rem;
+  font-size: 16px;
   font-weight: 800;
   color: var(--black);
   padding: 1rem 0;
@@ -307,8 +308,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .footer .credit {
-  font-size: 2rem;
-  margin-top: 2rem;
+  font-size: 16px;
   padding-bottom: 2rem;
   color: #1a2835;
   text-align: center;
@@ -332,6 +332,7 @@ html::-webkit-scrollbar-thumb {
   padding: 14px 20px;
   text-decoration: none;
   text-align: center;
+  text-wrap: nowrap;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
@@ -371,22 +372,27 @@ html::-webkit-scrollbar-thumb {
   display: block;
 }
 .p {
-  background-color: #c88d192a;
-  padding: 5px;
-  border-radius: 10px;
+  background-color: #ad6a6a;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 2%; /* Corregir el padding */
-  max-width: 80%; /* Ajusta el ancho según sea necesario */
   margin: 0 auto; /* Centra el contenedor */
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+.texto{
+  color: white;
+margin-bottom: 50px;
+font-size: 18px;
 
+}
 .pro{
   
-  background-color: #d58190;
+  background-color: #555;
   text-align: center;
   display: inline-block;
     padding: 0px 2px;
-    background-color: #d58190;
     color: #fff;
     text-decoration: none;
     border-radius: 8px;
