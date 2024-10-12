@@ -12,9 +12,72 @@ body {
     align-items: center;
     padding: 20px;
 }
+.header {
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color:white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    padding-bottom: 10px;
+    z-index: 999;
+    height: 60px;
+    text-decoration: none;
+  }
+  .header .logoContent {
+    display: flex;
+    align-items: center;
+  }
+  .header .logoContent .logo img {
+    height: 7rem;
+  }
+  .header .logoContent .logoName {
+    color: black;
+    font-size: 1.1rem;
+    font-weight: bolder;
+  }
+  
+  .header .navbar a {
+    font-size: 1.2rem;
+    margin-right: 3rem;
+    color: var(--black);
+    font-weight: 400;
+  }
+  .header .navbar a:hover {
+    border-bottom: 0.1rem solid var(--black);
+    padding-bottom: 0.4rem;
+  }
+  .header .icon i {
+    font-size: 2rem;
+    margin-right: 2rem;
+    color: var(--black);
+    cursor: pointer;
+  }
+  .logo-1 img {
+    transform: translateY(20px);
+    height: 70px;
+    margin-right: 20px;
+  }
+  
+  @media (max-width: 991px) {
+    .header {
+      padding: 1.4rem 5%;
+    }
+    .header .logoContent .logoName {
+      display: none;
+    }
+    .header .navbar a {
+      font-size: 1.1rem;
+      margin-right: 2rem;
+      text-decoration: none;
+    }
 
-header {
-    margin-bottom: 20px;
+    
+}
+.navbar a{
+    text-decoration: none;
 }
 
 h1 {
@@ -36,6 +99,7 @@ h1 {
     width: 250px; /* Ancho fijo de la tarjeta */
     padding: 20px;
     transition: transform 0.2s;
+    margin-top: 20px;
 }
 
 .card:hover {
@@ -62,4 +126,7 @@ h1 {
 
 .details-button:hover {
     background-color: #0056b3;
+}
+.t{
+    margin-top: 100px;
 }

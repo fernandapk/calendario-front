@@ -21,13 +21,13 @@ document.getElementById("formulario-login").addEventListener("submit", async fun
 
             if (data.rol === "usuario") {
                 console.log("Rol: usuario");
-                window.location.href = './explorar.html';
-            } else if (data.rol === "adm") {
-                console.log("Rol: adm");
-                window.location.href = '../../page/tablaadmi.html';
+                window.location.href = '../../pages/app/empresas.html';
+            } else if (data.rol === "administrador") {
+                console.log("Rol: administrador");
+                window.location.href = '../../pages/app/tablaadmi.html';
             } else if (data.rol === "trabajador") {
                 console.log("Rol: trabajador");
-                window.location.href = '/trabajadores.html';
+                window.location.href = '../../pages/app/trabajadores.html';
             } else {
                 console.log("Rol no reconocido");
                 alert("Usuario sin permisos"); // Asegúrate de que el servidor envíe un campo 'message' en la respuesta

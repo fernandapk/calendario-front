@@ -4,6 +4,7 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
     let email = document.getElementById("email").value;
     let contraseña = document.getElementById("pass").value;
     let nom_emp = document.getElementById("nombre-emp").value;
+    let code_emp = document.getElementById("code-emp").value;
     const url = "http://localhost:5000/registroadm";  // URL de tu servidor de registro (cambia a http://localhost:5000 si no estás usando HTTPS)
 
     //try {
@@ -18,7 +19,8 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
                 email: email, 
                 password: contraseña,
                 rol : 'adm',
-                nom : nom_emp
+                nom : nom_emp,
+                code : code_emp
              })
         });
 
@@ -29,7 +31,7 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
             const data = await respuesta.json();
             alert(data.message);
         
-             window.location.href = '../../tablaadmi.html';
+             window.location.href = '../pages/app/tablaadmi.html';
 
           
         } else {

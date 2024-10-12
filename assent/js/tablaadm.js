@@ -85,7 +85,7 @@ async function cargarTrabajadores() {
             
             cellNombre.innerHTML = trabajador.username;
             cellEmail.innerHTML = trabajador.email;
-            cellContraseña.innerHTML = trabajador.password;  // Cambiado de innerHtml a innerHTML
+            cellContraseña.innerHTML = trabajador.contraseña;  // Cambiado de innerHtml a innerHTML
         });
     } catch (error) {
         console.error("Error al cargar trabajadores:", error);
