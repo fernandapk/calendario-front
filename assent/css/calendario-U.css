@@ -1,0 +1,123 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 300;
+    margin-bottom: 30px;
+  }
+  
+  /* Contenedor de los días de la semana */
+  .semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .semana h1 {
+    font-size: 18px;
+    color: #34495e;
+    padding: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para los horarios */
+  .horarios {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  
+  .horarios article {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .horarios article p {
+    margin: 0;
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+  
+  .horarios article span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #e74c3c;
+    font-weight: bold;
+  }
+  
+  .horarios article span:hover {
+    color: #c0392b;
+  }
+  
+  /* Formulario de registro */
+  form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  form input[type="time"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #bdc3c7;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+  }
+  
+  form input[type="time"]:focus {
+    border-color: #3498db;
+  }
+  
+  /* Botón de nuevo registro */
+  button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Media queries para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .semana, .horarios {
+        grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .semana, .horarios {
+        grid-template-columns: repeat(2, 1fr);
+    }
+  
+    button {
+        width: 100%;
+        margin-top: 10px;
+    }
+  }
+  
