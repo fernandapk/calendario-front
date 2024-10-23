@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Peluquería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../pages/trabajador.css">
+
+</head>
+<body>
+    <header class="header">
+        <div class="logoContent">
+            <a href="#" class="logo-1"><img src="../assent/img/logo.png" alt></a>
+            <h1 class="logoName">Calendario de Belleza</h1>
+        </div>
+
+        <nav class="navbar">
+            
+            
+            <a href="/">Inicio</a>
+            <div class="dropdown">
+                <a href="login.html" class="dropbtn">Cerrar sesión</a>
+                
+            
+            </div>
+        </nav>
+    </header>
+    <!-- Mostrar el correo del usuario autenticado -->
+    <p>Correo: <span id="correo-usuario">{{ correo }}</span></p>
+
+    <!-- Día seleccionado (modificable con JavaScript) -->
+    <p>Día seleccionado: <span id="dia-seleccionado"></span></p>
+
+    <div class="container">
+        <h2>Selecciona tu fecha</h2>
+        
+        <!-- Carrusel de meses -->
+        <div class="month-carousel">
+            <span class="arrow" onclick="changeMonth(-1)">&#9664;</span>
+            <div class="month" id="current-month"></div>
+            <span class="arrow" onclick="changeMonth(1)">&#9654;</span>
+        </div>
+
+        <!-- Selección de fechas -->
+        <div class="date-picker" id="date-picker"></div>
+        
+        <!-- Sección de mañana, tarde y noche -->
+        <div class="time-periods">
+            <div class="time-period active" onclick="selectPeriod(this, 'morning')">Mañana</div>
+            <div class="time-period" onclick="selectPeriod(this, 'afternoon')">Tarde</div>
+            <div class="time-period" onclick="selectPeriod(this, 'evening')">Noche</div>
+        </div>
+
+        <!-- Sección de horario ingresado -->
+        <div class="time-section">
+            <input type="time" id="input-horario" placeholder="Selecciona tu horario">
+            <button onclick="addTime()">Añadir Horario</button>
+        </div>
+
+        <!-- Mostrar horarios seleccionados -->
+        <div id="selected-times-list" class="selected-times">
+            <h3>Horarios seleccionados</h3>
+        </div>
+    </div>
+    <script>
+        // Pasar el correo del trabajador desde Flask a JS
+        const correotrabajador = "{{ correo }}";  // Asigna el correo desde Flask al JS
+        const datePicker = document.getElementById("date-picker");
+        const diaSeleccionado = document.getElementById("dia-seleccionado");
+        const currentMonthDiv = document.getElementById("current-month");
+        const currentDate = new Date();
+        let currentYear = currentDate.getFullYear();
+        let currentMonth = currentDate.getMonth();
+        let selectedTimes = {};  // Para almacenar las horas seleccionadas para cada día
+        let currentSelectedDate = null;  // Para almacenar la fecha seleccionada actualmente
+    
+        // Función para mostrar el mes y el año actuales
+        function updateMonthDisplay() {
+            currentMonthDiv.innerText = `${getMonthName(currentMonth)} ${currentYear}`;
+            generateDays(currentMonth, currentYear);
+        }
+    
+        // Función para obtener el nombre del mes
+        function getMonthName(month) {
+            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            return monthNames[month];
+        }
+    
+        // Función para cambiar el mes
+        function changeMonth(direction) {
+            currentMonth += direction;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            updateMonthDisplay();
+        }
+    
+        // Función para generar los días del mes seleccionado
+        function generateDays(month, year) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            datePicker.innerHTML = ""; // Limpiar los días anteriores
+    
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateDiv = document.createElement("div");
+                dateDiv.className = "date";
+                
+                // Día de la semana correspondiente al día actual
+                const dayOfWeek = new Date(year, month, day).toLocaleDateString('es-ES', { weekday: 'short' });
+    
+                dateDiv.innerHTML = `<div class="day-of-week">${dayOfWeek}</div> ${day}`;
+                dateDiv.onclick = function () { selectDate(this, day); };
+                
+                // Si es el día actual, marcarlo en color rosa
+                if (year === currentDate.getFullYear() && month === currentDate.getMonth() && day === currentDate.getDate()) {
+                    dateDiv.classList.add('current-date');
+                }
+    
+                datePicker.appendChild(dateDiv);
+            }
+        }
+    
+        // Función para seleccionar una fecha
+        function selectDate(element, day) {
+            const allDates = document.querySelectorAll('.date');
+            allDates.forEach(date => {
+                date.classList.remove('active');
+            });
+            element.classList.add('active');
+            
+            currentSelectedDate = `${currentYear}-${currentMonth + 1}-${day}`;
+            diaSeleccionado.innerText = currentSelectedDate;  // Mostrar el día seleccionado
+            showSelectedTimes();
+        }
+    
+        // Función para agregar un horario seleccionado
+        function addTime() {
+            const inputHorario = document.getElementById('input-horario');
+            const time = inputHorario.value;
+    
+            if (!currentSelectedDate) {
+                alert('Por favor, selecciona una fecha.');
+                return;
+            }
+    
+            if (!time) {
+                alert('Por favor, selecciona un horario.');
+                return;
+            }
+    
+            if (!selectedTimes[currentSelectedDate]) {
+                selectedTimes[currentSelectedDate] = [];
+            }
+    
+            selectedTimes[currentSelectedDate].push(time);
+            inputHorario.value = '';  // Limpiar el input de hora después de agregar
+    
+            showSelectedTimes();
+        }
+    
+        // Mostrar los horarios seleccionados para la fecha actual
+        function showSelectedTimes() {
+            const selectedTimesList = document.getElementById('selected-times-list');
+            selectedTimesList.innerHTML = `<h3>Horarios seleccionados para ${currentSelectedDate || ''}</h3>`;
+    
+            if (!currentSelectedDate || !selectedTimes[currentSelectedDate] || selectedTimes[currentSelectedDate].length === 0) {
+                selectedTimesList.innerHTML += '<p>No has seleccionado horarios.</p>';
+                return;
+            }
+    
+            selectedTimes[currentSelectedDate].forEach((time, index) => {
+                const timeDiv = document.createElement('div');
+                timeDiv.className = 'selected-time';
+                timeDiv.innerHTML = `${time} <span class="remove-time" onclick="removeTime(${index})">Eliminar</span>`;
+                selectedTimesList.appendChild(timeDiv);
+            });
+        }
+    
+        // Función para eliminar un horario seleccionado
+        function removeTime(index) {
+            selectedTimes[currentSelectedDate].splice(index, 1);
+            showSelectedTimes();
+        }
+    
+        // Función para enviar el correo, la fecha y el horario seleccionado al servidor
+        function enviarHorarioAlServidor() {
+            if (!currentSelectedDate) {
+                alert("Por favor, selecciona una fecha.");
+                return;
+            }
+    
+            const inputHorario = document.getElementById('input-horario');
+            const time = inputHorario.value;
+    
+            if (!time) {
+                alert('Por favor, selecciona un horario.');
+                return;
+            }
+    
+            const data = {
+                correo: correotrabajador,
+                dia: currentSelectedDate,
+                hora: time  // Añadir el horario seleccionado
+            };
+    
+            fetch('/horarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Respuesta del servidor:", data);
+                alert("Horario guardado exitosamente");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+        }
+    
+        // Inicializar la página
+        updateMonthDisplay();
+    </script>
+    
+</body>
+</html>

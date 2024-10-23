@@ -27,7 +27,7 @@ document.getElementById("formulario-login").addEventListener("submit", async fun
                 window.location.href = '../../pages/app/tablaadmi.html';
             } else if (data.rol === "trabajador") {
                 console.log("Rol: trabajador");
-                window.location.href = '../../pages/app/trabajadores.html';
+                window.location.href = '../../pages/trabajador.html';
             } else {
                 console.log("Rol no reconocido");
                 alert("Usuario sin permisos"); // Asegúrate de que el servidor envíe un campo 'message' en la respuesta
