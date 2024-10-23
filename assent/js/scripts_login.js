@@ -26,6 +26,7 @@ document.getElementById("formulario-login").addEventListener("submit", async fun
                 console.log("Rol: administrador");
                 window.location.href = '../../pages/app/tablaadmi.html';
             } else if (data.rol === "trabajador") {
+                localStorage.setItem("correo", data.correo);
                 console.log("Rol: trabajador");
                 window.location.href = '../../pages/trabajador.html';
             } else {
