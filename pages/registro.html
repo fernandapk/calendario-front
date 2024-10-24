@@ -1,58 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registro</title>
-    <link rel="stylesheet" href="../assent/css/registro.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="logoContent">
-          <a href="#" class="logo-1"><img src="../assent/img/glow.png" alt></a>
-          <h1 class="logoName">GLOW S.A.S</h1>
-      </div>
 
-      <nav class="navbar">
-          <a href="/">Inicio</a>
-          <a href="#galeria">Galería</a>
-          <a href="#about">Acerca de nosotros</a>
-          <a href="#contact">Contacto</a>
-          <div class="dropdown">
-              <a href="javascript:void(0)" class="dropbtn">Usuario</a>
-              <div class="dropdown-content">
-                  <a href="../pages/login.html">Iniciar sesión</a>
-                  <a href="../pages/registro.html">Registrarse</a>
-              </div>
-          </div>
-      </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro</title>
+  <link rel="stylesheet" href="../assent/css/registro.css" />
+  <style>
+    /* Estilos básicos para el cubículo de términos y condiciones */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+    }
+
+    .modal-header {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .modal-body {
+      max-height: 300px;
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    .modal-footer {
+      margin-top: 15px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #d58190;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: #f5b3bf;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="logoContent">
+      <a href="#" class="logo-1"><img src="../assent/img/glow.png" alt></a>
+      <h1 class="logoName">GLOW S.A.S</h1>
+    </div>
+
+    <nav class="navbar">
+      <a href="/">Inicio</a>
+      <a href="#galeria">Galería</a>
+      <a href="#about">Acerca de nosotros</a>
+      <a href="#contact">Contacto</a>
+      <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Usuario</a>
+        <div class="dropdown-content">
+          <a href="../pages/login.html">Iniciar sesión</a>
+          <a href="../pages/registro.html">Registrarse</a>
+        </div>
+      </div>
+    </nav>
   </header>
-    <div class="registro-container">
-      <a href="/"><img class="logo" src="../assent/img/logo.png" alt /></a>
-      <h2>Registrarse</h2>
-      <form id="formulario-registro">
-        <div class="form-group">
-          <label for="nombre"> Nombre: </label>
-          <input id="name" type="text" />
-        </div>
-        <div class="form-group">
-          <label for="correo"> Correo </label>
-          <input id="email" type="email" />
-        </div>
-        <div class="form-group">
-          <label for="contraseña"> Contraseña </label>
-          <input id="pass" type="password" />
-        </div>
-        <button class="btn" id="but" type="submit">Registrarme</button>
-      </form>
-      <div class="contenedor-enlace">
-        <a href="login.html" class="enlace">Iniciar sesión</a>
-        <a href="registroadm.html" class="enlace"
-          >Registrarme como administrador</a
-        >
+  <div class="registro-container">
+    <a href="/"><img class="logo" src="../assent/img/logo.png" alt /></a>
+    <h2>Registrarse</h2>
+    <form id="formulario-registro">
+      <div class="form-group">
+        <label for="nombre"> Nombre: </label>
+        <input id="name" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="correo"> Correo </label>
+        <input id="email" type="email" />
+      </div>
+      <div class="form-group">
+        <label for="contraseña"> Contraseña </label>
+        <input id="pass" type="password" />
+      </div>
+      <button class="btn" id="but" type="button">Registrarme</button>
+    </form>
+    <div class="contenedor-enlace">
+      <a href="login.html" class="enlace">Iniciar sesión</a>
+      <a href="registroadm.html" class="enlace">Registrarme como administrador</a>
+    </div>
+  </div>
+
+  <!-- Modal de términos y condiciones -->
+  <div id="modal-terminos" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">Términos y Condiciones</div>
+      <div class="modal-body">
+        <p>Términos y Condiciones de Uso de [Glow S.A.S]</p>
+
+        <p> 1. Aceptación de Términos Al acceder y utilizar [CALENDARIO DE BELLEZA], aceptas cumplir con estos Términos
+          y Condiciones. Si no estás de acuerdo con alguno de ellos, te recomendamos que no utilices la aplicación.</p>
+
+        <p> 2. Descripción del Servicio [CALENDARIO DE BELLEZA] es una plataforma que permite a los usuarios gestionar
+          citas de belleza, como peluquería, estética. La aplicación ofrece herramientas para programar, modificar y
+          cancelar citas.</p>
+
+        <p> 3. Registro de Usuario Para acceder a ciertas funciones, debes crear una cuenta. Te comprometes a
+          proporcionar información precisa y actualizada. Eres responsable de mantener la confidencialidad de tus
+          credenciales de acceso y de todas las actividades que ocurran bajo tu cuenta.</p>
+
+        <p> 4. Uso de la Aplicación Te comprometes a utilizar la aplicación únicamente para fines legales y de acuerdo
+          con las leyes aplicables. No podrás utilizar la aplicación para:
+
+          Realizar actividades fraudulentas o ilegales.
+          Cargar contenido que sea ofensivo, difamatorio o que infrinja los derechos de terceros.
+          Interferir con la seguridad de la aplicación.
+        <p> 5. Propiedad Intelectual Todos los derechos de propiedad intelectual relacionados con [Nombre de la
+          Aplicación] son propiedad de [Nombre de la Empresa]. No se permite la reproducción, distribución o
+          modificación de la aplicación sin nuestro consentimiento previo.</p>
+
+        <p> 6. Responsabilidad [Nombre de la Empresa] no será responsable de ningún daño directo, indirecto, incidental
+          o consecuente que resulte del uso de la aplicación. No garantizamos que el servicio estará libre de errores o
+          interrupciones.</p>
+
+        <p> 7. Modificaciones de los Términos Nos reservamos el derecho a modificar estos términos en cualquier momento.
+          Te notificaremos sobre cambios importantes y tu uso continuo de la aplicación después de la notificación
+          constituye tu aceptación de los nuevos términos.
+
+        <p>8. Legislación Aplicable Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes de
+          [COLOMBIA].</p>
+
+        <p>9. Contacto Si tienes preguntas sobre estos Términos y Condiciones, puedes contactarnos a través de
+          [Glowcalendario@gmail.com].</p>
+        <!-- Puedes agregar más texto aquí -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn" id="btn-aceptar">Aceptar</button>
+        <button class="btn" id="btn-cancelar">Cancelar</button>
       </div>
     </div>
-    <script src="../assent/js/scripts.js"></script>
-  </body>
+  </div>
+
+  <script src="../assent/js/scripts.js"></script>
+</body>
+
 </html>
