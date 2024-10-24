@@ -4,123 +4,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ver Horarios</title>
+    <title>Reserva de Peluquería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../../assent/css/calendario-U.css">
 </head>
 
 <body>
-    <h1>Ver Horarios</h1>
-    <div>
-        <p>Usuario: Fernanda</p>
-        <p>Correo: <span id="correo-usuario">majo@majo.com</span></p>
-        <p>Día seleccionado: <span id="diaseleccionado">Lunes</span></p>
+    <header class="header">
+        <div class="logoContent">
+            <a href="#" class="logo-1"><img src="../../assent/img/logo.png" alt></a>
+            <h1 class="logoName">Calendario de Belleza</h1>
+        </div>
+
+        <nav class="navbar">
+            <a href="/">Inicio</a>
+            <div class="dropdown">
+                <a href="login.html" class="dropbtn">Cerrar sesión</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="info-container">
+        <p>Correo: <span id="correo-usuario">{{ correo }}</span></p>
+        <p>Día seleccionado: <span id="dia-seleccionado"></span></p>
     </div>
 
-    <div class="semana">
-        <h1 class="dia" data-dia="Lunes">Lunes</h1>
-        <h1 class="dia" data-dia="Martes">Martes</h1>
-        <h1 class="dia" data-dia="Miércoles">Miércoles</h1>
-        <h1 class="dia" data-dia="Jueves">Jueves</h1>
-        <h1 class="dia" data-dia="Viernes">Viernes</h1>
-        <h1 class="dia" data-dia="Sábado">Sábado</h1>
-        <h1 class="dia" data-dia="Domingo">Domingo</h1>
+    <div class="container">
+        <h2>Selecciona tu fecha</h2>
+
+        <div class="month-carousel">
+            <span class="arrow" onclick="changeMonth(-1)">&#9664;</span>
+            <div class="month" id="current-month"></div>
+            <span class="arrow" onclick="changeMonth(1)">&#9654;</span>
+        </div>
+
+        <div class="date-picker" id="date-picker"></div>
+
+        <div id="selected-times-list" class="selected-times">
+            <h3>Horarios disponibles</h3>
+        </div>
     </div>
 
-    <div class="horarios" id="horarios">
-        <!-- Horarios se mostrarán aquí -->
-    </div>
-    <button>Agendar</button>
     <script>
-       const urlHorarios = "http://localhost:5000/horarios";
-const urlAgendar = "http://localhost:5000/agendar"; // URL para agendar la cita
-const correoUsuario = document.getElementById('correo-usuario').textContent;
-let horarioSeleccionado = null;
+        const correotrabajador = localStorage.getItem("correo");  // Obtener el correo del trabajador
 
-// Event listener para cargar los horarios al hacer clic en un día
-document.querySelectorAll('.dia').forEach(dia => {
-    dia.addEventListener('click', () => {
-        const diaSeleccionado = dia.getAttribute('data-dia');
-        document.getElementById('diaseleccionado').textContent = diaSeleccionado;
-        cargarHorarios(diaSeleccionado);
-        document.getElementById('agendar').disabled = true; // Deshabilitar el botón hasta que se seleccione una hora
-        horarioSeleccionado = null; // Reiniciar la selección de horario
-    });
-});
+        // Función para obtener horarios guardados al cargar la página
+        function fetchSavedSchedules() {
+            fetch(`http://localhost:5000/horarios?correo=${correotrabajador}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al obtener horarios');
+                    }
+                    return response.json();
+                })
+                .then(horarios => {
+                    displaySavedSchedules(horarios);
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
 
-// Función para cargar los horarios según el día y el correo del usuario
-function cargarHorarios(dia) {
-    fetch(urlHorarios, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            correo: correoUsuario,
-            dia: dia
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        mostrarHorarios(data.horarios);
-    })
-    .catch(error => console.error('Error al cargar los horarios:', error));
-}
+        // Función para mostrar los horarios guardados
+        function displaySavedSchedules(horarios) {
+            const selectedTimesList = document.getElementById('selected-times-list');
+            selectedTimesList.innerHTML = '<h3>Horarios disponibles</h3>'; // Reiniciar el contenedor
 
-// Función para mostrar los horarios de manera interactiva
-function mostrarHorarios(horarios) {
-    const contenedorHorarios = document.getElementById('horarios');
-    contenedorHorarios.innerHTML = ''; // Limpiar horarios previos
+            if (horarios.length === 0) {
+                selectedTimesList.innerHTML += '<p>No hay horarios guardados.</p>';
+                return;
+            }
 
-    if (horarios.length === 0) {
-        contenedorHorarios.innerHTML = '<p>No hay horarios disponibles para este día.</p>';
-    } else {
-        horarios.forEach(horario => {
-            const p = document.createElement('p');
-            p.textContent = horario;
-            p.classList.add('horario'); // Añadimos una clase para poder seleccionar el horario
-            p.addEventListener('click', () => seleccionarHorario(horario, p));
-            contenedorHorarios.appendChild(p);
-        });
-    }
-}
+            horarios.forEach(({ dia, hora }) => {
+                const timeDiv = document.createElement('div');
+                timeDiv.className = 'selected-time';
+                timeDiv.innerHTML = `${dia} - ${hora}`;
+                selectedTimesList.appendChild(timeDiv);
+            });
+        }
 
-// Función para seleccionar un horario
-function seleccionarHorario(horario, elemento) {
-    // Desmarcar cualquier otro horario previamente seleccionado
-    document.querySelectorAll('.horario').forEach(h => h.classList.remove('seleccionado'));
-    elemento.classList.add('seleccionado');
-    horarioSeleccionado = horario;
-    document.getElementById('agendar').disabled = false; // Habilitar el botón de agendar
-}
+        window.onload = fetchSavedSchedules;
 
-// Event listener para el botón de "Agendar"
-document.getElementById('agendar').addEventListener('click', () => {
-    const diaSeleccionado = document.getElementById('diaseleccionado').textContent;
+        const datePicker = document.getElementById("date-picker");
+        const currentMonthDiv = document.getElementById("current-month");
+        const currentDate = new Date();
+        let currentYear = currentDate.getFullYear();
+        let currentMonth = currentDate.getMonth();
 
-    if (horarioSeleccionado) {
-        // Enviar los datos al servidor para agendar la cita
-        fetch(urlAgendar, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                correo: correoUsuario,
-                dia: diaSeleccionado,
-                hora: horarioSeleccionado
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert('Cita agendada con éxito.');
-            // Aquí puedes limpiar la selección o mostrar alguna confirmación visual
-        })
-        .catch(error => console.error('Error al agendar la cita:', error));
-    } else {
-        alert('Por favor, selecciona una hora antes de agendar.');
-    }
-});
+        function updateMonthDisplay() {
+            currentMonthDiv.innerText = `${getMonthName(currentMonth)} ${currentYear}`;
+            generateDays(currentMonth, currentYear);
+        }
 
+        function getMonthName(month) {
+            const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            return monthNames[month];
+        }
+
+        function changeMonth(direction) {
+            currentMonth += direction;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            updateMonthDisplay();
+        }
+
+        function generateDays(month, year) {
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            datePicker.innerHTML = ""; // Limpiar los días anteriores
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateDiv = document.createElement("div");
+                dateDiv.className = "date";
+                const dayOfWeek = new Date(year, month, day).toLocaleDateString('es-ES', { weekday: 'short' });
+
+                dateDiv.innerHTML = `<div class="day-of-week">${dayOfWeek}</div> ${day}`;
+                dateDiv.onclick = function () { selectDate(this, day); };
+
+                datePicker.appendChild(dateDiv);
+            }
+        }
+
+        function selectDate(element, day) {
+            const allDates = document.querySelectorAll('.date');
+            allDates.forEach(date => {
+                date.classList.remove('active');
+            });
+            element.classList.add('active');
+
+            const selectedDate = `${currentYear}-${currentMonth + 1}-${day}`;
+            document.getElementById("dia-seleccionado").innerText = selectedDate;  // Mostrar el día seleccionado
+
+            // Llamar a la función para mostrar horarios disponibles para la fecha seleccionada
+            displayAvailableTimes(selectedDate);
+        }
+
+        // Función para mostrar horarios disponibles para una fecha seleccionada
+        function displayAvailableTimes(selectedDate) {
+            const selectedTimesList = document.getElementById('selected-times-list');
+            selectedTimesList.innerHTML = '<h3>Horarios disponibles</h3>'; // Reiniciar el contenedor
+
+            fetch(`http://localhost:5000/horarios?correo=${correotrabajador}`)
+                .then(response => response.json())
+                .then(horarios => {
+                    // Filtrar los horarios para la fecha seleccionada
+                    const availableHours = horarios.filter(h => h.dia === selectedDate);
+                    if (availableHours.length === 0) {
+                        selectedTimesList.innerHTML += '<p>No hay horarios disponibles para esta fecha.</p>';
+                        return;
+                    }
+
+                    availableHours.forEach(({ hora }) => {
+                        const timeDiv = document.createElement('div');
+                        timeDiv.className = 'selected-time';
+                        timeDiv.innerHTML = `${selectedDate} - ${hora}`;
+                        selectedTimesList.appendChild(timeDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
+
+        updateMonthDisplay();
     </script>
 </body>
 

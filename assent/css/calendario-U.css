@@ -1,123 +1,293 @@
-/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;     
+  box-sizing: border-box;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #2c3e50;
-    font-weight: 300;
-    margin-bottom: 30px;
-  }
-  
-  /* Contenedor de los días de la semana */
-  .semana {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .semana h1 {
-    font-size: 18px;
-    color: #34495e;
-    padding: 10px;
-    background-color: #ecf0f1;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Estilos para los horarios */
-  .horarios {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-  }
-  
-  .horarios article {
-    background-color: #ecf0f1;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-  
-  .horarios article p {
-    margin: 0;
-    font-size: 14px;
-    color: #2c3e50;
-    font-weight: 600;
-  }
-  
-  .horarios article span {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    color: #e74c3c;
-    font-weight: bold;
-  }
-  
-  .horarios article span:hover {
-    color: #c0392b;
-  }
-  
-  /* Formulario de registro */
-  form {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  form input[type="time"] {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #bdc3c7;
-    border-radius: 5px;
-    margin-right: 10px;
-    outline: none;
-  }
-  
-  form input[type="time"]:focus {
-    border-color: #3498db;
-  }
-  
-  /* Botón de nuevo registro */
-  button {
-    background-color: #3498db;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  button:hover {
-    background-color: #2980b9;
-  }
-  
-  /* Media queries para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .semana, .horarios {
-        grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .semana, .horarios {
-        grid-template-columns: repeat(2, 1fr);
-    }
-  
-    button {
-        width: 100%;
-        margin-top: 10px;
-    }
-  }
-  
+  font-family: "Cormorant Garamond", serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: white;
+  width: 350px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Carrusel de meses */
+.month-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  cursor: pointer;
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.month {
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  color: #333;
+}
+
+.month.active {
+  background-color: #ffcc00;
+}
+
+/* Selección de fechas */
+.date-picker {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  margin: 20px 0;
+}
+
+.date {
+  text-align: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  width: 40px;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.date.active {
+  background-color: #FFAFCC; /* Color rosado pastel */
+  color: white;
+}
+
+.day-of-week {
+  font-size: 10px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* Sección de mañana, tarde y noche */
+.time-periods {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.time-period {
+  padding: 10px;
+  background-color: #FFAFCC; /* Color rosado pastel */
+  border-radius: 5px;
+  width: 30%;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.time-period.active {
+  background-color: #FFC8DD; /* Color rosado más oscuro */
+}
+
+.time-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.time-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 15px;
+  margin-bottom: 10px;
+  width: 30%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.time-button:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.time-button.active {
+  background-color: #FFAFCC; /* Color rosado pastel */
+  color: white;
+}
+
+.continue-button {
+  background-color: #FFAFCC; /* Color rosado pastel */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.active {
+  background-color: lightblue;
+}
+
+.current-date {
+  background-color: pink;
+}
+
+.time-button.active {
+  background-color: lightblue;
+}
+
+.date.active {
+  border: 2px solid blue;
+}
+
+/* Estilo para el campo de entrada de horario */
+input[type="time"] {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Estilo para los horarios seleccionados */
+.selected-times {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.selected-time {
+  margin: 5px 0;
+  padding: 5px;
+  background-color: #e0e0ff;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.remove-time {
+  margin-left: 10px;
+  color: red;
+  cursor: pointer;
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #F0F0F0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 5%;
+  z-index: 999;
+  height: 60px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logoContent {
+  display: flex;
+  align-items: center;
+}
+
+.logo-1 img {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.logoName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1b1722;
+  white-space: nowrap;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  font-size: 1.2rem;
+  margin-right: 20px;
+  color: black;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 8px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  background-color: #d58190;
+  color: white;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #d58190;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.login-container {
+  background-color: #faf8f8; /* Fondo del contenedor rosa claro */
+  padding: 30px;
+  border-radius: 20px 100px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 100px;
+  filter: grayscale(0);
+  margin: 15px;
+}
