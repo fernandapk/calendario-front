@@ -33,7 +33,7 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
             alert(data.message);        
             localStorage.setItem("email", email);
             localStorage.setItem("rol", "administrador");
-             window.location.href = '../pages/app/tablaadmi.html';
+             window.location.href = 'pages/app/tablaadmi.html';
           
         } else {
             alert("Error en el registro");

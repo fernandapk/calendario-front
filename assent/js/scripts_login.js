@@ -21,14 +21,14 @@ document.getElementById("formulario-login").addEventListener("submit", async fun
        localStorage.setItem("email", email);
         if (data.rol === "usuario") {
             localStorage.setItem("rol", "usuario");
-            window.location.href = '../../pages/app/empresas.html';
+            window.location.href = 'pages/app/empresas.html';
         } else if (data.rol === "administrador") {
             localStorage.setItem("rol", "administrador");
-            window.location.href = '../../pages/app/tablaadmi.html';
+            window.location.href = 'pages/app/tablaadmi.html';
         } else if (data.rol === "trabajador") {
             localStorage.setItem("rol", "trabajador");
             console.log("Rol: trabajador");
-            window.location.href = '../../pages/app/trabajador.html';
+            window.location.href = 'pages/app/trabajador.html';
         } else {
             console.log("Rol no reconocido");
             alert("Usuario sin permisos"); // Asegúrate de que el servidor envíe un campo 'message' en la respuesta

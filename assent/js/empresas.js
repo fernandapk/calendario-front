@@ -21,7 +21,7 @@ async function fetchEmpresas() {
                  alt="${empresa.nombre_empresa}" class="card-image">
                 <h2>${empresa.nombre_empresa}</h2>
                 <button 
-                    onclick="window.location.href='../../pages/app/empleados.html?correoEmpresa=${empresa.correo}'"
+                    onclick="window.location.href='pages/app/empleados.html?correoEmpresa=${empresa.correo}'"
 
                 class="visit-button">Visitar</button>
             `;

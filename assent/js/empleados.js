@@ -23,7 +23,7 @@ async function fetchTrabajadores() {
                 <h2>${trabajador.nombre}</h2>
                 <p>Correo: ${trabajador.correo}</p>
                 <button
-                    onclick="window.location.href='../../pages/app/agenda.html?correoTrabajador=${trabajador.correo}'"
+                    onclick="window.location.href='pages/app/agenda.html?correoTrabajador=${trabajador.correo}'"
                  class="details-button">Ver agenda</button> 
             `;
             cardContainer.appendChild(card);
