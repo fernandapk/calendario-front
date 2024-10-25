@@ -299,4 +299,8 @@ body {
 }
 .das{
     margin-top: 100px;
+    max-width: 1000px;
+    border-radius: 20px;
+    border: 10px solid #d581907c;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
