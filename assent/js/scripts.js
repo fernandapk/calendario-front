@@ -32,7 +32,7 @@ document.getElementById("btn-aceptar").addEventListener("click", async function 
       localStorage.setItem("email", email);
       localStorage.setItem("rol", "usuario");
       alert(data.message);
-      window.location.href = 'pages/app/empresas.html';    
+      window.location.href = '/calendario-front/pages/app/empresas.html';    
     } else {
       throw new Error("Error en el registro");
     }
