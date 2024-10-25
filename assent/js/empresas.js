@@ -2,7 +2,7 @@
 // Función para obtener empresas y crear tarjetas
 async function fetchEmpresas() {
     try {
-        const response = await fetch('http://127.0.0.1:5000/obtener-empresas');
+        const response = await fetch('https://calendario-bak.onrender.com/obtener-empresas');
         if (!response.ok) throw new Error('Error al obtener las empresas');
 
         const empresas = await response.json();

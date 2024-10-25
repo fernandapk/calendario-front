@@ -239,7 +239,7 @@ async function init() {
     const urlParams = new URLSearchParams(window.location.search);
     const correoTrabajador = urlParams.get('correoTrabajador');
     console.log(correoTrabajador);
-    const response = await fetch('http://127.0.0.1:5000/obtener-trabajador?correoTrajabador=' + correoTrabajador);
+    const response = await fetch('https://calendario-bak.onrender.com/obtener-trabajador?correoTrajabador=' + correoTrabajador);
     if (!response.ok) {
         alert('Error al obtener trabajador');
     }
