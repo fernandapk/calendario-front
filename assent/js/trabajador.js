@@ -223,7 +223,7 @@ function removeTime(index, time) {
         hora: time      
     };
 
-    fetch('http://localhost:5000/eliminar-horario', {
+    fetch('https://calendario-bak.onrender.com/eliminar-horario', {
         method: 'POST',  
         headers: {
             'Content-Type': 'application/json'
@@ -277,7 +277,7 @@ function enviarHorarioAlServidor(correo, dia, hora) {
     console.log("Enviando datos al servidor:", data);  // Mostrar datos en la consola
 
     // Realizar la solicitud al servidor para guardar el horario
-    fetch('http://localhost:5000/horarios', {
+    fetch('https://calendario-bak.onrender.com/horarios', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -322,7 +322,7 @@ function recibirHorarios(email, date) {
         dia: date  
     };
 
-    fetch('http://localhost:5000/obtenerhorarios', {
+    fetch('https://calendario-bak.onrender.com/obtenerhorarios', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

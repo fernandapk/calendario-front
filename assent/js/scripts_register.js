@@ -4,7 +4,7 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
     let email = document.getElementById("email").value;
     let contraseña = document.getElementById("pass").value;
 
-    const url = "http://localhost:5000/registro";  // URL de tu servidor de registro (cambia a http://localhost:5000 si no estás usando HTTPS)
+    const url = "https://calendario-bak.onrender.com/registro";  // URL de tu servidor de registro (cambia a https://calendario-bak.onrender.com si no estás usando HTTPS)
 
    
     const respuesta = await fetch(url, {

@@ -12,7 +12,7 @@ document.getElementById("btn-aceptar").addEventListener("click", async function 
   let email = document.getElementById("email").value;
   let contraseña = document.getElementById("pass").value;
 
-  const url = "http://localhost:5000/registro"; // URL de tu servidor de registro
+  const url = "https://calendario-bak.onrender.com/registro"; // URL de tu servidor de registro
 
   try {
     const respuesta = await fetch(url, {

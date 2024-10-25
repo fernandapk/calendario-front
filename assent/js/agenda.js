@@ -3,7 +3,7 @@ const correoUsuario = localStorage.getItem("email");  // Obtener el correo del t
 
 // Función para obtener horarios guardados al cargar la página
 function fetchSavedSchedules() {
-    fetch(`http://localhost:5000/horarios?correo=${correotrabajador}`)
+    fetch(`https://calendario-bak.onrender.com/horarios?correo=${correotrabajador}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al obtener horarios');
@@ -108,7 +108,7 @@ function recibirHorarios(email, date) {
         dia: date
     };
 
-    fetch('http://localhost:5000/obtenerhorarios', {
+    fetch('https://calendario-bak.onrender.com/obtenerhorarios', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -159,7 +159,7 @@ function reservar(index, time) {
         correoUsuario: correoUsuario
     };
 
-    fetch('http://localhost:5000/reservar-horario', {
+    fetch('https://calendario-bak.onrender.com/reservar-horario', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -210,7 +210,7 @@ function displayAvailableTimes(selectedDate) {
     const selectedTimesList = document.getElementById('selected-times-list');
     selectedTimesList.innerHTML = '<h3>Horarios disponibles</h3>'; // Reiniciar el contenedor
 
-    fetch(`http://localhost:5000/horarios?correo=${correotrabajador}`)
+    fetch(`https://calendario-bak.onrender.com/horarios?correo=${correotrabajador}`)
         .then(response => response.json())
         .then(horarios => {
             // Filtrar los horarios para la fecha seleccionada

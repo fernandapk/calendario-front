@@ -7,7 +7,7 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
     let url_img_emp = document.getElementById("url-img-emp").value;
     let code_emp = document.getElementById("code-emp").value;
     
-    const url = "http://localhost:5000/registroadm"; 
+    const url = "https://calendario-bak.onrender.com/registroadm"; 
 
         const data = {
             username: nombre, 

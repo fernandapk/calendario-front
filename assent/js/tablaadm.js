@@ -8,7 +8,7 @@ document.getElementById("nuevoTrabajadorForm").addEventListener("submit", async 
     let email = document.getElementById("email").value;
     let url_img = document.getElementById("url_img").value;
 
-    const url = "http://localhost:5000/registrotrabajador";  
+    const url = "https://calendario-bak.onrender.com/registrotrabajador";  
     const data = {
         emailEmpresa: localStorage.getItem("email"), 
         username: nombre, 
@@ -44,7 +44,7 @@ document.getElementById("nuevoTrabajadorForm").addEventListener("submit", async 
 
 // Función para cargar trabajadores
 async function cargarTrabajadores() {
-    const url = "http://localhost:5000/obtenertrabajadores";  // URL de tu servidor para obtener los trabajadores
+    const url = "https://calendario-bak.onrender.com/obtenertrabajadores";  // URL de tu servidor para obtener los trabajadores
 
     try {
         const email = localStorage.getItem("email");
@@ -82,7 +82,7 @@ async function cargarTrabajadores() {
             botonEliminar.className = "btn-danger";
             botonEliminar.onclick = async function() {
                 if (confirm("¿Estás seguro de eliminar a " + trabajador.email + "?")) {
-                    const url = "http://localhost:5000/eliminartrabajador";  // URL de tu servidor para eliminar trabajadores
+                    const url = "https://calendario-bak.onrender.com/eliminartrabajador";  // URL de tu servidor para eliminar trabajadores
                     try {
                         const respuesta = await fetch(url, {
                             method: 'POST',
