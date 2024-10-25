@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Peluquería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../assent/css/trabajador.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="logoContent">
+            <a href="#" class="logo-1"><img src="../../assent/img/logo.png" alt></a>
+            <h1 class="logoName">Calendario de Belleza</h1>
+        </div>
+
+        <nav class="navbar">
+            <a href="/">Inicio</a>
+            <div class="dropdown">
+                <a onclick="cerrarSesion()" class="dropbtn">Cerrar sesión</a>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <div class="hero">
+            <h1>Calendario de trabajador</h1>
+            <h2>Bienvenido, ¡<span id="nombreTrabajador"></span>!</h2>
+        </div>
+
+
+        <!-- Contenedor del calendario y los horarios -->
+        <div class="container">
+            <h2>Selecciona tu fecha</h2>
+
+            <!-- Carrusel de meses -->
+            <div class="month-carousel">
+                <span class="arrow" onclick="changeMonth(-1)">&#9664;</span>
+                <div class="month" id="current-month"></div>
+                <span class="arrow" onclick="changeMonth(1)">&#9654;</span>
+            </div>
+
+            <!-- Selección de fechas -->
+            <div class="date-picker" id="date-picker"></div>
+
+
+
+            <p class="selected-day">Día seleccionado: <span id="dia-seleccionado"></span></p>
+
+            <!-- Sección de horario ingresado -->
+            <div class="time-section">
+                <input type="time" id="input-horario" 
+                placeholder="Selecciona tu horario"
+                disabled
+                >
+                <button 
+                id="btn-horario"
+                class="btn-1"
+                onclick="addTime()"
+                disabled
+                >Añadir Horario</button>
+            </div>
+
+            <!-- Mostrar horarios seleccionados -->
+            <div class="selected-times">
+                <h3>Horarios seleccionados</h3>
+                <div id="selected-times-list"></div>
+
+            </div>
+        </div>
+
+    </main>
+    <script src="../../assent/js/trabajador.js"></script>
+</body>
+
+</html>

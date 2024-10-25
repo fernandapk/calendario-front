@@ -41,13 +41,16 @@ body {
     background-color: #f4f4f4;
     height: 100vh;
     margin: 0;
+  }
+
+  main{
+  padding: 70px 20px 20px 20px;
 }
 
 section{
     height: 100%;
     width: 100%;
     padding: 20px;
-    padding-top: 70px ;
     
     display: flex;
     align-items: center;
@@ -122,6 +125,20 @@ section{
 
 /* ------------------------------sección de formulario ------------------------------*/
 
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    margin-top: 60px;
+    color: #bd00bd;
+}
+.hero span{
+    color: #ff00ff;
+    font-weight: 700;
+}
 .form-container {
     margin: 20px;
     background: white;
@@ -147,6 +164,7 @@ label, input {
 }
 
 input[type="text"],
+input[type="url"],
 input[type="password"],
 input[type="email"] {
     width: 100%;
@@ -192,11 +210,6 @@ thead {
     font-size: 20px;
 }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
 
 tbody tr:nth-child(even) {
     background-color: #f2f2f2;
@@ -264,9 +277,7 @@ nav ul li a {
   text-decoration: none;
 }
 
-main {
-  padding: 20px;
-}
+
 
 .resumen, .gestion-trabajadores, .estadisticas {
   margin-bottom: 30px;
@@ -306,10 +317,17 @@ table, th, td {
   border: 1px solid #ddd;
 }
 
+
 th, td {
-  padding: 12px;
+  padding: 5px 5px 0 15px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
 }
+
+.td-center {
+  text-align: center;
+}
+
 
 th {
   background-color: #f2f2f2;
@@ -335,4 +353,12 @@ button:hover {
   border-radius: 5px;
   padding: 20px;
   text-align: center;
+}
+
+
+.card-image-user{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }

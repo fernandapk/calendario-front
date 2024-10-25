@@ -28,34 +28,6 @@
         <!-- Las tarjetas de los trabajadores se generarán aquí -->
     </section>
 
-    <script>
-        // Función para obtener trabajadores y crear tarjetas
-        async function fetchTrabajadores() {
-            try {
-                const response = await fetch('http://127.0.0.1:5000/obtener-trabajadores');
-                if (!response.ok) throw new Error('Error al obtener los trabajadores');
-
-                const trabajadores = await response.json();
-                const cardContainer = document.getElementById('cardContainer');
-
-                trabajadores.forEach(trabajador => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.innerHTML = `
-                        <img src="https://via.placeholder.com/150" alt="${trabajador.nombre}" class="card-image">
-                        <h2>${trabajador.nombre}</h2>
-                        <p>Correo: ${trabajador.correo}</p>
-                        <button class="details-button">agendar</button> <!-- Botón agregado -->
-                    `;
-                    cardContainer.appendChild(card);
-                });
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        // Llamar a la función al cargar la página
-        document.addEventListener('DOMContentLoaded', fetchTrabajadores);
-    </script>
+    <script src="../../assent/js/empleados.js"></script>
 </body>
 </html>

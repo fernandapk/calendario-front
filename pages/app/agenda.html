@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Peluquería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../assent/css/agenda.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logoContent">
+            <a href="#" class="logo-1"><img src="../../assent/img/logo.png" alt></a>
+            <h1 class="logoName">Calendario de Belleza</h1>
+        </div>
+
+        <nav class="navbar">
+            <a href="/">Inicio</a>
+            <div class="dropdown">
+                <a 
+                onclick="cerrarSesion()"                
+                class="dropbtn">Cerrar sesión</a>
+            </div>
+        </nav>
+    </header>
+    <main>
+
+        <aside>
+            <div class="card-trabajador">
+                <img id="imagen-trabajador" alt="Imagen del trabajador">
+                <h3 id="nombre-trabajador">Nombre del trabajador</h3>
+                <p id="nombre-empresa">Nombre de la empresa</p>
+            </div>
+            <div class="month-carousel">
+                <span class="arrow" onclick="changeMonth(-1)">&#9664;</span>
+                <p class="month" id="current-month"></p>
+                <span class="arrow" onclick="changeMonth(1)">&#9654;</span>
+            </div>
+        </aside>
+
+
+
+        <article class="container">
+            <h2>Selecciona tu fecha</h2>
+            <hr>
+            <section class="calendar-container">
+                <div class="date-picker calendar" id="date-picker"></div>
+                <div class="selected-times">
+                    <h3>Horarios disponibles</h3>
+                    <div id="selected-times-list" ></div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <script src="../../assent/js/agenda.js"></script>
+</body>
+
+</html>

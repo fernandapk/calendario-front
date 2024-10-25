@@ -9,17 +9,71 @@ body {
   background-color: #f4f4f4;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  align-items: start;
+  min-height: 100vh;
 }
 
-.container {
+main{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  padding-top: 80px;
+  box-sizing: border-box;
+
+}
+
+aside {
+  width: 300px;
+  flex-shrink: 0; /* Evita que `aside` se reduzca */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  border-radius: 10px;
+}
+
+.card-trabajador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.card-trabajador img{
+  width: 200px;
+  border-radius: 5px;
+    margin-bottom: 10px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.card-trabajador h3{
+  font-size: 4rem;
+  line-height: 0.8;
+  margin-bottom: 10px;
+}
+.card-trabajador p{
+  font-size: 2rem;
+  line-height: 0.8;
+  margin-bottom: 10px;
+  color: #da8a97;
+}
+
+article {
+  flex: 1; /* Permite que `article` crezca y ocupe el espacio restante */
   background-color: white;
-  width: 350px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
 }
 
 h2 {
@@ -28,57 +82,100 @@ h2 {
 
 /* Carrusel de meses */
 .month-carousel {
+  width: 100%;
+  margin-top: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
 }
 
 .arrow {
   cursor: pointer;
-  font-size: 20px;
+  font-size: 30px;
   margin: 0 10px;
+  &:hover {
+    color: #333;
+  }
 }
 
 .month {
-  padding: 10px;
   background-color: #f0f0f0;
+  height: 40px;
+  width: 100%;
+  text-align: center;
   border-radius: 5px;
+  padding: 10px;
   color: #333;
+  font-size: 18px;
 }
 
 .month.active {
   background-color: #ffcc00;
 }
 
-/* Selección de fechas */
+
+.calendar-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 60px;
+  padding: 20px;
+}
+.calendar{  
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+/* Selección de fechas 
 .date-picker {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   overflow-x: auto;
   padding: 10px 0;
   margin: 20px 0;
+  
 }
+*/
 
 .date {
   text-align: center;
-  padding: 10px;
-  background-color: #f0f0f0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #8379a733;
   border-radius: 5px;
-  width: 40px;
-  font-size: 12px;
   color: #333;
   cursor: pointer;
-  margin-right: 10px;
 }
-
+/*
+width: 40px;
+*/
 .date.active {
-  background-color: #FFAFCC; /* Color rosado pastel */
+  background-color: #fdd4e3; /* Color rosado pastel */
   color: white;
 }
 
+.day-number{
+  font-size: 1.5rem;
+  font-weight: 900;
+  font-size: 30px;
+  font-family: 'verdana';
+  color: #333;
+}
 .day-of-week {
-  font-size: 10px;
-  color: #555;
-  margin-bottom: 5px;
+  font-size: 20px;
+  color: #555;  
 }
 
 /* Sección de mañana, tarde y noche */
@@ -155,7 +252,7 @@ h2 {
 }
 
 .date.active {
-  border: 2px solid blue;
+  border: 2px solid rgb(116, 116, 116);
 }
 
 /* Estilo para el campo de entrada de horario */
@@ -167,6 +264,13 @@ input[type="time"] {
   width: 100%;
 }
 
+
+#selected-times-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
 /* Estilo para los horarios seleccionados */
 .selected-times {
   margin-top: 10px;
@@ -174,20 +278,30 @@ input[type="time"] {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 5px;
+  flex:1;
 }
 
 .selected-time {
-  margin: 5px 0;
-  padding: 5px;
-  background-color: #e0e0ff;
-  border: 1px solid #aaa;
+  width: 100%;
+  padding: 10px;
+  background-color: #ffffff2d;
+  border-bottom: 1px solid #aaa;
   border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-around;
 }
 
-.remove-time {
-  margin-left: 10px;
-  color: red;
+.reservar-time {
   cursor: pointer;
+  background-color: #FFAFCC; /* Color rosado pastel */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  
 }
 .header {
   position: fixed;

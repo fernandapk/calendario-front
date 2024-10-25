@@ -4,42 +4,40 @@ document.getElementById("formulario-registro").addEventListener("submit", async 
     let email = document.getElementById("email").value;
     let contraseña = document.getElementById("pass").value;
     let nom_emp = document.getElementById("nombre-emp").value;
+    let url_img_emp = document.getElementById("url-img-emp").value;
     let code_emp = document.getElementById("code-emp").value;
-    const url = "http://localhost:5000/registroadm";  // URL de tu servidor de registro (cambia a http://localhost:5000 si no estás usando HTTPS)
+    
+    const url = "http://localhost:5000/registroadm"; 
 
-    //try {
-        console.log("-----333333-----")
+        const data = {
+            username: nombre, 
+            email: email, 
+            password: contraseña,
+            rol : 'adm',
+            nom : nom_emp,
+            url_img : url_img_emp,
+            code : code_emp
+        }
+
         const respuesta = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                username: nombre, 
-                email: email, 
-                password: contraseña,
-                rol : 'adm',
-                nom : nom_emp,
-                code : code_emp
-             })
+            body: JSON.stringify(data)
         });
-
-
-        console.log("--------------------")
+ 
 
         if (respuesta.ok) {
             const data = await respuesta.json();
-            alert(data.message);
-        
+            alert(data.message);        
+            localStorage.setItem("email", email);
+            localStorage.setItem("rol", "administrador");
              window.location.href = '../pages/app/tablaadmi.html';
-
           
         } else {
-            throw new Error("Error en el registro");
+            alert("Error en el registro");
         }
-    //} catch (error) {
-      //  console.error("Error al intentar registrar:", error);
-        //alert("Error al intentar registrar. Por favor, inténtalo nuevamente.");
-    //}
+
     
 });

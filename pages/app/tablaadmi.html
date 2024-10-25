@@ -1,122 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrador</title>
 
-    <!--fuente de google patra letra-->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Lilita+One&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrador</title>
 
-    <link rel="stylesheet" href="../../assent/css/tablaadm.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="logoContent">
-        <a href="#" class="logo-1"><img src="../../assent/img/logo.png" alt /></a>
-        <h1 class="logoName">CALENDARIO DE BELLEZA</h1>
+  <!--fuente de google patra letra-->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Lilita+One&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="../../assent/css/tablaadm.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="logoContent">
+      <a href="#" class="logo-1"><img src="../../assent/img/logo.png" alt /></a>
+      <h1 class="logoName">CALENDARIO DE BELLEZA</h1>
+    </div>
+
+    <nav class="navbar">
+      <a href="/">Inicio</a>
+      <a class="btn-1" onclick="cerrarSesion()">
+        Cerrar Sesión</a>
+    </nav>
+  </header>
+  <main>
+    <div class="hero">
+      <h1>Panel de Administrador</h1>
+      <h2 >Bienvenido,<span id="nombreAdmin"></span>!</h2>
+    </div>
+
+
+    <section class="resumen">
+      <h2>Resumen General</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Total de Trabajadores</h3>
+          <p id="totalTrabajadores"></p>
+        </div>
+        <div class="card">
+          <h3>Clientes Hoy</h3>
+          <p>45</p>
+        </div>
+        <div class="card">
+          <h3>Ingresos del Día</h3>
+          <p>€1,200</p>
+        </div>
       </div>
-
-      <nav class="navbar">
-        <a href="/">Inicio</a>
-        <a class="btn-1" href="../login.html">Cerrar Sesión</a>
-      </nav>
-    </header>
-    <main>
-      <section class="resumen">
-          <h2>Resumen General</h2>
-          <div class="cards">
-              <div class="card">
-                  <h3>Total de Trabajadores</h3>
-                  <p>15</p>
-              </div>
-              <div class="card">
-                  <h3>Clientes Hoy</h3>
-                  <p>45</p>
-              </div>
-              <div class="card">
-                  <h3>Ingresos del Día</h3>
-                  <p>€1,200</p>
-              </div>
-          </div>
-      </section>
-
-      <section class="gestion-trabajadores">
-          <h2>Gestión de Trabajadores</h2>
-          <table>
-              <thead>
-                  <tr>
-                      <th>Nombre</th>
-                      <th>Rol</th>
-                      <th>Horario</th>
-                      <th>Acciones</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>Ana Pérez</td>
-                      <td>Peluquera</td>
-                      <td>9:00 - 18:00</td>
-                      <td><button>Editar</button> <button>Eliminar</button></td>
-                  </tr>
-                  <tr>
-                      <td>Luis Martínez</td>
-                      <td>Manicurista</td>
-                      <td>10:00 - 19:00</td>
-                      <td><button>Editar</button> <button>Eliminar</button></td>
-                  </tr>
-                  <!-- Agregar más trabajadores aquí -->
-              </tbody>
-          </table>
-      </section>
-
-      <section class="estadisticas">
-          <h2>Estadísticas Recientes</h2>
-          <div class="chart">
-              <!-- Aquí podrías integrar una gráfica con Chart.js u otra librería -->
-              <p>Gráfica de desempeño semanal (en construcción)</p>
-          </div>
-      </section>
-  </main>
-
-    <section>
-      <div class="form-container">
-        <h2>Añadir Nuevo Trabajador</h2>
-        <form id="nuevoTrabajadorForm">
-          <div class="form-group">
-            <label for="nombre">Nombre del trabajador:</label>
-            <input type="text" id="nombre" name="nombre" required />
-          </div>
-          <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-            <div class="form-group">
-              <label for="contraseña">Contraseña:</label>
-              <input type="text" id="contraseña" name="contraseña" required />
-            </div>
-
-          <button class="btn" type="submit">Agregar</button>
-        </form>
-      </div>
-      <table id="trabajadores">
-        <thead>
-          <tr>
-            <th>Nombre del trabajador</th>
-            <th>Email</th>
-            <th>Contraseña</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- El contenido de la tabla se llenará dinámicamente con JavaScript -->
-        </tbody>
-      </table>
     </section>
 
-    <script src="../../assent/js/tablaadm.js"></script>
-  </body>
+    <section class="estadisticas">
+      <h2>Estadísticas Recientes</h2>
+      <div class="chart">
+        <!-- Aquí podrías integrar una gráfica con Chart.js u otra librería -->
+        <p>Gráfica de desempeño semanal (en construcción)</p>
+      </div>
+    </section>
+
+    <section class="gestion-trabajadores">
+      <h2>Gestión de Trabajadores</h2>
+       
+
+
+  
+    <div class="form-container">
+      <h2>Añadir Nuevo Trabajador</h2>
+      <form id="nuevoTrabajadorForm">
+        <div class="form-group">
+          <label for="nombre">Nombre del trabajador:</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="contraseña">Contraseña:</label>
+          <input type="text" id="contraseña" name="contraseña" required />
+        </div>
+        <div class="form-group">
+          <label for="url_img">URL de la imagen:</label>
+          <input type="url" id="url_img" name="url_img" />
+        </div>
+
+        <button class="btn" type="submit">Agregar</button>
+      </form>
+    </div>
+    <table id="trabajadores">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Nombre del trabajador</th>
+          <th>Email</th>
+          <th>Contraseña</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- El contenido de la tabla se llenará dinámicamente con JavaScript -->
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+  <script src="../../assent/js/tablaadm.js"></script>
+</body>
+
 </html>

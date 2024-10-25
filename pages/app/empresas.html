@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,59 +12,35 @@
     <title>Peluquerías Disponibles</title>
     <link rel="stylesheet" href="../../assent/css/empresa.css">
 </head>
-<body> 
+
+<body>
     <header class="header">
-    <div class="logoContent">
-        <a href="#" class="logo-1"><img src="../../bc/img/logo.png" alt></a>
-        <h1 class="logoName">Calendario de Belleza</h1>
-    </div>
-
-    <nav class="navbar">
-        
-        
-        <a href="/">Inicio</a>
-        <div class="dropdown">
-            <a href="login.html" class="dropbtn">Cerrar sesión</a>
-            
-        
+        <div class="logoContent">
+            <a href="#" class="logo-1"><img src="../../bc/img/logo.png" alt></a>
+            <h1 class="logoName">Calendario de Belleza</h1>
         </div>
-    </nav>
-</header>
-    <h1>
-        <h1>Salones Disponibles</h1>
-    </h>
 
-    <section class="card-container" id="cardContainer">
-        <!-- Las tarjetas de las peluquerías se generarán aquí -->
-    </section>
+        <nav class="navbar">
 
-    <script>
-        // Función para obtener empresas y crear tarjetas
-        async function fetchEmpresas() {
-            try {
-                const response = await fetch('http://127.0.0.1:5000/obtener-empresas');
-                if (!response.ok) throw new Error('Error al obtener las empresas');
 
-                const empresas = await response.json();
-                const cardContainer = document.getElementById('cardContainer');
+            <a href="/">Inicio</a>
+            <div class="dropdown">
+                <a onclick="cerrarSesion()" class="dropbtn">Cerrar sesión</a>
 
-                empresas.forEach(empresa => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.innerHTML = `
-                        <img src="https://via.placeholder.com/150" alt="${empresa.nombre_empresa}" class="card-image">
-                        <h2>${empresa.nombre_empresa}</h2>
-                        <button class="visit-button">Visitar</button>
-                    `;
-                    cardContainer.appendChild(card);
-                });
-            } catch (error) {
-                console.error(error);
-            }
-        }
 
-        // Llamar a la función al cargar la página
-        document.addEventListener('DOMContentLoaded', fetchEmpresas);
-    </script>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <h1>
+            <h1>Salones Disponibles</h1>
+            </h>
+
+            <section class="card-container" id="cardContainer">
+                <!-- Aquí se insertarán las tarjetas de las empresas -->
+            </section>
+    </main>
+    <script src="../../assent/js/empresas.js"></script>
 </body>
+
 </html>

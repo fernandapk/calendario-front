@@ -9,9 +9,16 @@ body {
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     height: 100vh;
 }
+
+
+
+main {
+    padding: 70px 20px 20px 20px;
+}
+
 
 .container {
     background-color: white;
@@ -26,11 +33,29 @@ h2 {
     margin-bottom: 20px;
 }
 
+
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+    margin-top: 10px;
+    color: #ff36ab;
+}
+.hero span{
+    color: #5e5e5e;
+    font-weight: 700;
+}
+
+
+
 /* Carrusel de meses */
 .month-carousel {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .arrow {
@@ -76,7 +101,7 @@ h2 {
 }
 
 .day-of-week {
-    font-size: 10px;
+    font-size: 15px;
     color: #555;
     margin-bottom: 5px;
 }
@@ -86,6 +111,17 @@ h2 {
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
+}
+
+
+
+.selected-day{
+    border: 1px solid #cccccc71;
+    color: gray;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
 }
 
 .time-period {
@@ -155,7 +191,7 @@ h2 {
 }
 
 .date.active {
-    border: 2px solid blue;
+    border: 2px solid rgb(88, 88, 88);
 }
 
 /* Estilo para el campo de entrada de horario */
@@ -165,6 +201,10 @@ input[type="time"] {
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
+
+    &:disabled {
+        background-color: #f0f0f0;
+    }
 }
 
 /* Estilo para los horarios seleccionados */
@@ -176,19 +216,33 @@ input[type="time"] {
     border-radius: 5px;
 }
 
+
+
 .selected-time {
     margin: 5px 0;
-    padding: 5px;
-    background-color: #e0e0ff;
+    padding: 10px;
+    background-color: #e0e0ff2f;
     border: 1px solid #aaa;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .remove-time {
     margin-left: 10px;
-    color: red;
+    color: white;
     cursor: pointer;
+    background-color: #646464;
+    padding: 5px 10px;
+    border-radius: 5px;
+    &:hover {
+        background-color: #ff4d4d;
+    }
 }
+
+
+
 .header {
     position: fixed;
     top: 0;
@@ -292,3 +346,34 @@ input[type="time"] {
     margin: 15px;
   }
   
+
+  .btn-1{
+    background-color: #FFAFCC; /* Color rosado pastel */
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+
+    &:hover {
+      background-color: #FFC8DD; /* Color rosado más oscuro */
+    }
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+
+  .btn-2{
+    background-color: #FFAFCC; /* Color rosado pastel */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }

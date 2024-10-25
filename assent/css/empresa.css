@@ -10,10 +10,22 @@ body {
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+   
 }
+
 
 header {
     margin-bottom: 20px;
@@ -22,11 +34,14 @@ header {
 h1 {
     color: #333;
     font-size: 2.5rem;
+    padding: 20px 0px 60px 0px;
 }
 
 .card-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
     width: 80%;
     max-width: 1200px;
 }

@@ -4,6 +4,7 @@
     padding: 0;
 }
 
+
 body {
   font-family: "Cormorant Garamond", serif;
     background-color: #f9f9f9;
@@ -110,6 +111,8 @@ h1 {
     width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
 }
 
 .details-button {
